@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -10,6 +11,11 @@ use App\Models\Permission;
 
 class adminController extends Controller
 {
+    public function getAllItems() {
+        $items = Item::all();
+        return view('admin.item', compact('items'));
+    }
+
     public function viewUser() {
         $users = User::all()->toArray();
 

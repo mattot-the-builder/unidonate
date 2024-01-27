@@ -54,4 +54,15 @@ Route::post('/search-item', [userController::class, 'searchItem'])->name('item.s
 
 Route::get('/run', [adminController::class, 'runCommand']);
 
+Route::group(['prefix' => 'admin', 'middleware' => ['role:admin', 'auth']], function() {
+    Route::get('/test', function() {
+        dd("you passed the admin test");
+    });
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/item', [adminController::class, 'getAllItems'])->name('admin.item');
+});
 require __DIR__.'/auth.php';
