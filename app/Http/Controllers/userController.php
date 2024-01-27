@@ -16,6 +16,7 @@ class userController extends Controller
 
         $item->donor_id = Auth::user()->id;
         $item->name = $req->name;
+        $item->category = $req->category;
         $item->item_condition = $req->item_condition;
         $item->description = $req->description;
 
@@ -62,7 +63,9 @@ class userController extends Controller
     }
 
     public function searchItem(Request $req) {
-        $items = Item::where('name', 'LIKE', '%'.$req->name.'%')->paginate(2);
+        $items = Item::where('name', 'LIKE', '%'.$req->name.'%')
+        ->orWhere('category', 'LIKE', '%'.$req->name.'%')
+        ->paginate(2);
         return view('item', ['items'=>$items]);
     }
 

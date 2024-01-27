@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("donor_id")->constrained("users")->cascadeOnDelete();
             $table->string("name");
+            $table->string("category")->nullable();
             $table->string("item_condition");
             $table->text("description")->nullable();
             $table->string("image")->nullable();

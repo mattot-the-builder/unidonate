@@ -29,11 +29,10 @@ class adminController extends Controller
         $deleteUser = Permission::find('1');
         $user = User::find('1');
         $admin = Role::find('2');
-        
+
 
         $user->addRole($admin);
 
-        
         dd('yeay');
     }
 }
