@@ -48,7 +48,7 @@ Route::get('/item/{item_id?}', [userController::class, 'viewItemDetails'])->name
 
 Route::get('/myitem', [userController::class, 'showUserItems'])->name('item.my');
 
-Route::get('/donate/{item_id?}', [userController::class, 'donateItem'])->name('donate');
+Route::post('/donate/{item_id?}', [userController::class, 'donateItem'])->name('donate');
 
 Route::post('/search-item', [userController::class, 'searchItem'])->name('item.search');
 

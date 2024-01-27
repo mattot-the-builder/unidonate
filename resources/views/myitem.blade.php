@@ -1,10 +1,10 @@
 <x-app-layout>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('My Items') }}
-            
+
             @if (session('alert'))
                 <div class="mt-3 mb-0 alert alert-success">
                     {{ session('alert') }}
@@ -12,7 +12,7 @@
             @endif
         </h2>
     </x-slot>
-    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -23,11 +23,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
                                 <th scope="col">Image</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Condition</th>
-                                <th scope="col">Donation Status</th>
-                                <th scope="col">Complete</th>
+                                <th scope="col">Receiver</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,13 +37,13 @@
                                 <td><img src="{{ 'storage/img/items/'.$item['image'] }}" alt="" style="height: 70px;"></td>
                                 <td>{{ $item['name'] }}</td>
                                 <td>{{ $item['item_condition'] }}</td>
-                                <td>{{ $item['status'] }}</td>
+                                <td>{{ \App\Models\Item::find($item['receiver_id'])->name }}</td>
                                 <td>
                                     <a href="{{ '/donate/'.$item['item_id'] }}" class="btn btn-dark">Donated</a>
                                 </td>
                             </tr>
                             @endforeach
-                            
+
                         </tbody>
                     </table>
                 </div>

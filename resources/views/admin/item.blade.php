@@ -30,7 +30,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Condition</th>
-                                <th scope="col">Donator</th>
+                                <th scope="col">Donor</th>
                                 <th scope="col">Receiver</th>
                                 <th scope="col">Delete</th>
                             </tr>
@@ -41,9 +41,9 @@
                                 <th scope="row">{{ $item['id'] }}</th>
                                 <td>{{ $item['name'] }}</td>
                                 <td>{{ $item['category'] }}</td>
-                                <td>{{ $item['condition'] }}</td>
-                                <td>{{ $item['donator'] }}</td>
-                                <td>{{ $item['receiver'] }}</td>
+                                <td>{{ $item['item_condition'] }}</td>
+                                <td>{{ $item['donor_id'] }}</td>
+                                <td>{{ $item['receiver_id'] }}</td>
                                 <td>
                                     <a href="{{ '/delete-item/'.$item['id'] }}" class="btn btn-danger">Delete</a>
                                 </td>

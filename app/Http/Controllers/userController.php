@@ -53,10 +53,11 @@ class userController extends Controller
         return view('myitem', ['items'=>$items]);
     }
 
-    public function donateItem($item_id) {
+    public function donateItem($item_id, Request $req) {
         $item = Item::find($item_id);
 
         $item->status = "DONATED";
+        $item->receiver_id = $req->receiver_id;
         $item->save();
 
         return redirect('/myitem');
