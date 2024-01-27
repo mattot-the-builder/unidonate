@@ -18,7 +18,7 @@ class userController extends Controller
         $item->name = $req->name;
         $item->item_condition = $req->item_condition;
         $item->description = $req->description;
-        
+
         if ($req->hasFile('image')) {
             $destination_path = 'public/img/items';
             $image = $req->file('image');
@@ -31,7 +31,7 @@ class userController extends Controller
         $item->status = 'AVAILABLE';
         $item->save();
 
-        return redirect('donation');
+        return redirect('donation')->with('success', 'Item added sucessfully');
     }
 
     public function viewItem() {
@@ -43,7 +43,7 @@ class userController extends Controller
     public function viewItemDetails($item_id) {
         $item = Item::find($item_id);
         $user = User::find($item['donor_id']);
-        
+
         return view('item-details', ['item'=>$item, 'user'=>$user]);
     }
 
@@ -65,5 +65,5 @@ class userController extends Controller
         $items = Item::where('name', 'LIKE', '%'.$req->name.'%')->paginate(2);
         return view('item', ['items'=>$items]);
     }
-    
+
 }
