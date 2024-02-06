@@ -24,9 +24,9 @@
 
     <div class="pb-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg d-flex">
-                <div class="col-6">
-                    <form class="me-auto ms-5 my-5" href="{{ route('donation.add') }}" method="POST"
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="mx-auto">
+                    <form class="" href="{{ route('donation.add') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
 
@@ -73,9 +73,6 @@
                         <button type="submit" class="btn btn-primary">Add Item</button>
 
                     </form>
-                </div>
-                <div class="col-6">
-
                 </div>
 
             </div>

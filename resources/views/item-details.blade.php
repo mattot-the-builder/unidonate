@@ -35,7 +35,7 @@
                             @if ($item['donor_id'] == Auth::user()->id)
                             <form action="{{ '/donate/'. $item['id'] }}" method="POST" class="mt-4 w-50">
                                 @csrf
-                                <h3 class="text-green-600 text-2xl items-center">Found your receiver?</h3>
+                                <h3 class="text-green-600 fs-2 mb-2 items-center">Found your receiver?</h3>
                                 <select id="receiver_id" required name="receiver_id"
                                     class="border border-gray-300 text-gray-900 text-sm py-1 rounded-lg focus:ring-blue-500 focus:border-blue-500 block"
                                     <!-- <option selected>Choose a country</option> -->
@@ -43,7 +43,7 @@
                                     <option value="{{$user->id}}">{{$user->name}} , ({{$user->id}})</option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="btn btn-dark mt-3">Donated</button>
+                                <button type="submit" class="btn btn-dark mt-3">Donate Item</button>
                             </form>
                             @endif
                         </div>

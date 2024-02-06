@@ -33,13 +33,17 @@
                         <tbody>
                             @foreach ($items as $item)
                             <tr>
-                                <th scope="row">{{ $item['item_id'] }}</th>
+                                <th scope="row">{{ $item['id'] }}</th>
                                 <td><img src="{{ 'storage/img/items/'.$item['image'] }}" alt="" style="height: 70px;"></td>
                                 <td>{{ $item['name'] }}</td>
                                 <td>{{ $item['item_condition'] }}</td>
-                                <td>{{ \App\Models\Item::find($item['receiver_id'])->name }}</td>
                                 <td>
-                                    <a href="{{ '/donate/'.$item['item_id'] }}" class="btn btn-dark">Donated</a>
+                                    @if (\App\Models\Item::find($item['receiver_id']))
+                                    {{\App\Models\Item::find($item['receiver_id'])->name}}
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ '/item/'.$item['id'] }}" class="btn btn-dark">Details</a>
                                 </td>
                             </tr>
                             @endforeach

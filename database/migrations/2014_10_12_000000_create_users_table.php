@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('student_id')->nullable();
             $table->string('status');
+            $table->boolean('isActive')->default(true);
             $table->string('telephone');
             $table->string('kelompok');
             $table->string('email')->unique();

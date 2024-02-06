@@ -16,10 +16,20 @@ class adminController extends Controller
         return view('admin.item', compact('items'));
     }
 
-    public function viewUser() {
-        $users = User::all()->toArray();
+    public function blacklistUser($user_id) {
+        $user = User::find($user_id);
+        $user->isActive = false;
+        $user->save();
 
-        return view('user', ['users'=>$users]);
+        return redirect('user')->with('success', 'User blacklisted successfully');
+    }
+
+    public function reactivateUser($user_id) {
+        $user = User::find($user_id);
+        $user->isActive = true;
+        $user->save();
+
+        return redirect('user')->with('success', 'User reactivated successfully');
     }
 
     public function deleteUser($user_id) {

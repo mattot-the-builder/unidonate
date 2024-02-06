@@ -40,7 +40,6 @@ Route::post('/donation', [userController::class, 'addDonation'])->name('donation
 
 Route::get('/item', [userController::class, 'viewItem'])->name('item');
 
-Route::get('/user', [adminController::class, 'viewUser'])->name('user');
 
 Route::get('/delete-user/{user_id?}', [adminController::class, 'deleteUser'])->name('user.delete');
 
@@ -54,15 +53,21 @@ Route::post('/search-item', [userController::class, 'searchItem'])->name('item.s
 
 Route::get('/run', [adminController::class, 'runCommand']);
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin', 'auth']], function() {
     Route::get('/test', function() {
         dd("you passed the admin test");
     });
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 
     Route::get('/item', [adminController::class, 'getAllItems'])->name('admin.item');
+
+    // Route::get('/user', [adminController::class, 'viewUser'])->name('user');
+    Route::view('/user', 'user')->name('user');
+    Route::get('/user/blacklist/{user_id?}', [adminController::class, 'blacklistUser'])->name('user.blacklist');
+    Route::get('/user/reactivate/{user_id?}', [adminController::class, 'reactivateUser'])->name('user.reactivate');
 });
 require __DIR__.'/auth.php';
