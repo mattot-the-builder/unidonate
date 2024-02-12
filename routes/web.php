@@ -58,11 +58,6 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin', 'auth']], function() {
-    Route::get('/test', function() {
-        dd("you passed the admin test");
-    });
-
-
     Route::get('/item', [adminController::class, 'getAllItems'])->name('admin.item');
 
     // Route::get('/user', [adminController::class, 'viewUser'])->name('user');
