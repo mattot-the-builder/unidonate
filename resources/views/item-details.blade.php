@@ -5,22 +5,21 @@
         </h2>
     </x-slot>
 
-    <div class="pt-12">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("Item Detail") }}
                     <br><br>
-                    <div class="d-flex justify-content-start align-items-top">
+                    <div class="grid grid-cols-2 gap-4">
                         <img src="{{ asset('storage/img/items/'.$item['image']) }}" alt="" class="w-25">
-                        <div class="mx-5 w-full flex justify-between">
+                        <div class="">
                             <div>
-                                <h2>{{ $item['name'] }}</h2><br>
-                                <span class="text-gray-500">
-                                    {{ $item['category'] }}
-                                </span>
+                                <h2 class="text-4xl font-semibold">{{ $item['name'] }}</h2><br>
+                                Category : <span class="text-gray-500">{{ $item['category'] }}</span>
                                 <br><br>
-                                Item condition : <span class="text-success">{{ $item['item_condition'] }}</span>
+                            Condition : <x-badge
+                                variation="{{ $item['item_condition'] == 'NEW' ? 'success' : 'danger' }}">{{$item['item_condition']}}</x-badge>
                                 <br><br>
                                 Donated by : {{ $user['name'] }}
                                 <br><br>
@@ -41,7 +40,7 @@
                                     <option value="{{$user->id}}">{{$user->name}} , ({{$user->id}})</option>
                                     @endforeach
                                 </select>
-                                <button type="submit" class="btn btn-dark mt-3">Donate Item</button>
+                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-4">Donate Item</button>
                             </form>
                             @endif
                         </div>
