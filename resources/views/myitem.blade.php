@@ -50,7 +50,7 @@
                                         {{ $item['id'] }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        <img src="{{ 'storage/img/items/'.$item['image'] }}" class="aspect-auto">
+                                        <img src="{{ 'storage/img/items/'.$item['image'] }}" class="w-48">
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $item['name'] }}

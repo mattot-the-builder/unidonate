@@ -73,8 +73,8 @@
                                         {{ $item['receiver_id'] }}
                                     </td>
                                     <td class="px-6 py-4 flex">
-                                        <x-button-danger url="{{ '/delete-item/'.$item['id'] }}">
-                                            Blacklist
+                                        <x-button-danger url="{{ route('item.delete', $item['id']) }}">
+                                            Delete
                                         </x-button-danger>
                                     </td>
                                 </tr>

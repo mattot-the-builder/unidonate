@@ -59,10 +59,12 @@ Route::get('/dashboard', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin', 'auth']], function() {
     Route::get('/item', [adminController::class, 'getAllItems'])->name('admin.item');
+    Route::get('/item/delete/{item_id}', [adminController::class, 'deleteItem'])->name('item.delete');
 
     // Route::get('/user', [adminController::class, 'viewUser'])->name('user');
     Route::view('/user', 'user')->name('user');
     Route::get('/user/blacklist/{user_id?}', [adminController::class, 'blacklistUser'])->name('user.blacklist');
     Route::get('/user/reactivate/{user_id?}', [adminController::class, 'reactivateUser'])->name('user.reactivate');
+
 });
 require __DIR__.'/auth.php';

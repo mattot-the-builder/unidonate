@@ -51,4 +51,10 @@ class adminController extends Controller
 
         dd('yeay');
     }
+
+    public function deleteItem($item_id) {
+        $item = Item::find($item_id);
+        $item->delete();
+        return redirect()->route('admin.item')->with('success', 'Item deleted successfully');
+    }
 }
