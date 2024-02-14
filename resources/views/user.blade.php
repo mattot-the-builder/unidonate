@@ -47,6 +47,12 @@
                                     Kelompok
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Donated Items
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Taken Items
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Account Status
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -74,6 +80,12 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $user['kelompok'] }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ \App\Models\Item::where('donor_id', $user['id'])->get()->count() }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ \App\Models\Item::where('receiver_id', $user['id'])->get()->count() }}
                                     </td>
                                     <td class="px-6 py-4 {{ $user['isActive'] ? 'text-green-600' : 'text-red-600' }}">{{
                                         $user['isActive'] ? 'ACTIVE':'INACTIVE' }}
